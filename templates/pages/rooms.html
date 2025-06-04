@@ -1,0 +1,116 @@
+{% extends 'common/base.html' %}
+
+{% block content %}
+<div class="clearfix">
+
+</div>
+<section>
+    <div class="container pt-5">
+        <h2 class="mr-pc">Rooms</h2>
+        <div class="py-3">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="standard-room-tab" data-toggle="tab" type="button" role="tab"
+                        aria-controls="home" aria-selected="true">Standard</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="delux-room-tab" data-toggle="tab" type="button" role="tab"
+                        aria-controls="profile" aria-selected="false">Delux</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="family-suit-tab" data-toggle="tab" type="button" role="tab"
+                        aria-controls="contact" aria-selected="false">Family Suit</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="business-suit-tab" data-toggle="tab" type="button" role="tab"
+                        aria-controls="contact" aria-selected="false">Business Suit</button>
+                </li>
+            </ul>
+        </div>
+
+        <div class="my-3">
+            <div id="rooms" class="row row-cols-1 row-cols-md-3 g-4">
+                {% for room in rooms %}
+                <div class="col ">
+                    <div class="card h-100 room-card">
+                        <img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title mr-pc" style="text-transform: uppercase;">{{room.style}}</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <ul class="list-group list-group-flush border-0">
+                            <li class="list-group-item text-center font-weight-bold mr-pc">${{room.booking_price}}</li>
+                        </ul>
+                        <div class="card-footer bg-transparent text-center">
+                            <small class="text-muted">
+                                <a class="text-center "
+                                    href="{% url 'room_details' %}?roomNumber={{room.room_number}}">Details</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
+
+{% block javascript %}
+<script>
+    const roomsElm = document.getElementById("rooms")
+    const imgUrl = 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
+    const updateRoomsElement = (filteredRooms) => {
+        let innerHtml = ""
+        filteredRooms.forEach((room, idx) => {
+            innerHtml += `
+            <div class="col ">
+                    <div class="card h-100 room-card">
+                        <img src="${imgUrl}"
+                            class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title mr-pc" style="text-transform: uppercase;">${room.style}</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                                additional content. This content is a little bit longer.</p>
+                        </div>
+                        <ul class="list-group list-group-flush border-0">
+                            <li class="list-group-item text-center font-weight-bold mr-pc">$${room.booking_price}</li>
+                        </ul>
+                        <div class="card-footer bg-transparent text-center">
+                            <small class="text-muted">
+                                <a class="text-center "
+                                    href="{% url 'room_details' %}?roomNumber=${room.room_number}">Details</a>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            `
+        }, null)
+
+        roomsElm.innerHTML = innerHtml;
+    }
+    async function fetchFilteredRooms(roomType) {
+        const url = `http://127.0.0.1:8000/hms/rooms/${roomType}`;
+        const res = await fetch(url, { "method": "GET" });
+        const res_data = await res.json();
+
+        updateRoomsElement(res_data.filtered_rooms)
+    }
+
+
+    const standardRoomElm = document.getElementById("standard-room-tab")
+    const deluxRoomElm = document.getElementById("delux-room-tab")
+    const familySuitElm = document.getElementById("family-suit-tab")
+    const businessSuitElm = document.getElementById("business-suit-tab")
+
+    standardRoomElm.addEventListener('click', () => fetchFilteredRooms("standard"))
+    deluxRoomElm.addEventListener('click', () => fetchFilteredRooms("delux"))
+    familySuitElm.addEventListener('click', () => fetchFilteredRooms("family"))
+    businessSuitElm.addEventListener('click', () => fetchFilteredRooms("business"))
+
+</script>
+{% endblock javascript %}
