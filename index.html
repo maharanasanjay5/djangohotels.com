@@ -12,9 +12,9 @@
       integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
    <!-- For Wish List -->
-   <link rel="stylesheet" href="/static/css/wishlist.css">
+   <link rel="stylesheet" href="/djangohotels.com/static/css/wishlist.css">
    <!-- Custom style sheet -->
-   <link rel="stylesheet" href="/static/css/style.css">
+   <link rel="stylesheet" href="/djangohotels.com/static/css/style.css">
    <!-- Font Awsome -->
    <script src="https://kit.fontawesome.com/0f42c19b3f.js" crossorigin="anonymous"></script>
 
@@ -33,16 +33,16 @@
          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto ml-auto">
                <li id="nav-home" class="nav-item">
-                  <a class="nav-link" href="/templates/pages/home_page.html">Home <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="/djangohotels.com/templates/pages/home_page.html">Home <span class="sr-only">(current)</span></a>
                </li>
                <li id="nav-rooms" class="nav-item">
-                  <a class="nav-link" href="/templates/pages/rooms.html">Rooms</a>
+                  <a class="nav-link" href="/djangohotels.com/templates/pages/rooms.html">Rooms</a>
                </li>
                <li id="nav-about" class="nav-item">
-                  <a class="nav-link" href="/templates/pages/about.html">About</a>
+                  <a class="nav-link" href="/djangohotels.com/templates/pages/about.html">About</a>
                </li>
                <li id="nav-contact" class="nav-item">
-                  <a class="nav-link" href="/templates/pages/contact.html">Contact</a>
+                  <a class="nav-link" href="/djangohotels.com/templates/pages/contact.html">Contact</a>
                </li>
 
             </ul>
@@ -55,22 +55,22 @@
                      {{user.person.name}}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                     <a class="dropdown-item" href="/templates/user/profile.html">Profile</a>
-                     <a class="dropdown-item" href="/templates/room_booking/wishlist.html">Wish List</a>
-                     <a class="dropdown-item" href="/templates/room_booking/my_booking.html">My booking</a>
+                     <a class="dropdown-item" href="/djangohotels.com/templates/user/profile.html">Profile</a>
+                     <a class="dropdown-item" href="/djangohotels.com/templates/room_booking/wishlist.html">Wish List</a>
+                     <a class="dropdown-item" href="/djangohotels.com/templates/room_booking/my_booking.html">My booking</a>
                      <div class="dropdown-divider"></div>
                      {% if user.is_receptionist %}
-                     <a class="dropdown-item" href="/templates/pages/management.html">Management</a>
+                     <a class="dropdown-item" href="/djangohotels.com/templates/pages/management.html">Management</a>
                      {% endif %}
-                     <a class="dropdown-item" href="/templates/user/login.html">Sign out</a>
+                     <a class="dropdown-item" href="/djangohotels.com/templates/user/login.html">Sign out</a>
                   </div>
                </li>
                {% else %}
                <li id="nav-signin" class="nav-item">
-                  <a class="nav-link" href="/templates/user/login.html">Sign in</a>
+                  <a class="nav-link" href="/djangohotels.com/templates/user/login.html">Sign in</a>
                </li>
                <li id="nav-signup" class="nav-item">
-                  <a class="nav-link " href="/templates/user/register.html">Sign up</a>
+                  <a class="nav-link " href="/djangohotels.com/templates/user/register.html">Sign up</a>
                </li>
                {% endif %}
             </ul>
