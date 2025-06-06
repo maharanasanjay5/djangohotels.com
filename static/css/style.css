@@ -80,64 +80,86 @@ a{
      box-shadow: rgba(0, 162, 183, 0.16) 0px 1px 4px;
 }
 
-/* Custom CSS to aggressively fix input-group and row overflow on very small screens */
+/* Add this to your custom CSS file, or directly in a <style> tag in your HTML header */
 @media (max-width: 575.98px) { /* Targets extra-small screens (Bootstrap's 'xs' breakpoint) */
 
-    /* Force the input-group-prepend to be highly flexible and constrain its width */
-    .input-group-prepend {
-        flex-shrink: 0 !important; /* Prevents it from consuming too much space */
-        max-width: 35% !important; /* Cap its max width (ADJUST THIS PERCENTAGE IF NEEDED) */
-        min-width: 0 !important;    /* Allow it to shrink to nothing */
+    /* Ensure html and body are behaving correctly */
+    html, body {
+        overflow-x: hidden !important; /* Hide potential scrollbar, but try to fix the cause below */
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
     }
 
-    .input-group-prepend .input-group-text {
-        white-space: normal !important; /* Allow text to wrap */
-        word-break: break-word !important; /* Break long words */
-        text-align: center !important; /* Center text if it wraps */
-        padding: .375rem .5rem !important; /* Slightly reduce padding if needed */
-        font-size: 0.85em !important; /* Make font smaller if it helps fit */
-        line-height: 1.2 !important; /* Adjust line height for wrapped text */
+    /* General box-sizing for all elements */
+    * {
+        box-sizing: border-box !important;
     }
 
-    /* Ensure form control (input/select) fills remaining space and shrinks */
-    .input-group .form-control,
-    .input-group .custom-select {
-        min-width: 0 !important;
-        flex-grow: 1 !important;
-        width: 100% !important; /* Important for flex items */
-    }
-
-    /* Aggressive reset for row margins and column padding on mobile */
+    /* Reset row and column spacing to ensure no conflicts */
     .row {
         margin-left: 0 !important;
         margin-right: 0 !important;
-        padding-left: 0 !important; /* Ensure no horizontal padding on the row itself */
-        padding-right: 0 !important; /* Ensure no horizontal padding on the row itself */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        width: 100% !important; /* Ensure row itself is 100% */
     }
-
-    /* Remove default column padding and add desired padding directly to inner content */
     .row > [class*="col-"] {
         padding-left: 0 !important;
         padding-right: 0 !important;
+        width: 100% !important; /* Force column to 100% on mobile */
     }
 
-    /* Apply inner horizontal padding to the direct children of the column */
-    .col-12 > .input-group,
-    .col-12 > .btn {
-        padding-left: 15px !important; /* Adjust this value as per your desired inner padding */
-        padding-right: 15px !important; /* Adjust this value */
+    /* Apply consistent padding to the wrapper, which should now fill the column 100% */
+    .input-item-wrapper {
+        padding-left: 15px !important; /* Adjust this value for desired inner spacing */
+        padding-right: 15px !important; /* Adjust this value for desired inner spacing */
+        width: 100% !important; /* Ensure wrapper takes full width of column */
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Force input-group and button to be 100% of their wrapper */
+    .input-item-wrapper .input-group,
+    .input-item-wrapper .btn {
+        width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+    }
+
+    /* Aggressive control over input-group-prepend text and sizing */
+    .input-group-prepend {
+        flex-shrink: 0 !important; /* Prevent it from expanding */
+        max-width: 35% !important; /* Adjust this percentage: e.g., 30%, 40% if labels are long */
+        min-width: unset !important; /* Remove any potential min-width */
+        flex-basis: auto !important; /* Allow flex basis to be automatic */
+    }
+
+    .input-group-prepend .input-group-text {
+        white-space: normal !important; /* Allows text to wrap */
+        word-break: break-all !important; /* Force word breaks even on non-space characters */
+        text-align: center !important;
+        padding: .375rem .5rem !important; /* Adjust if needed for better fit */
+        font-size: 0.8em !important; /* Make font smaller if necessary */
+        line-height: 1.2 !important;
+    }
+
+    /* Ensure form control (input/select) properly shrinks and takes remaining space */
+    .input-group .form-control,
+    .input-group .custom-select {
+        min-width: 0 !important; /* Crucial for allowing shrinkage */
+        flex-grow: 1 !important; /* Take all available space */
+        width: 100% !important; /* Override any potential default width */
     }
 
     /* Ensure the custom-search-box itself is not wider than the viewport */
     .custom-search-box {
         max-width: 100% !important;
-        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
     }
-
-        /* NEW: Apply consistent inner padding to our new wrapper for alignment */
-    .input-item-wrapper {
-        padding-left: 15px !important; /* Adjust this value as per your desired inner padding */
-        padding-right: 15px !important; /* Adjust this value */
-        box-sizing: border-box !important; /* Ensure padding doesn't add to total width */
-    } 
 }
+
