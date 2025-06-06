@@ -83,21 +83,19 @@ a{
 /* Add this to your custom CSS file, or directly in a <style> tag in your HTML header */
 @media (max-width: 575.98px) { /* Targets extra-small screens (Bootstrap's 'xs' breakpoint) */
 
-    /* Ensure html and body are behaving correctly */
+    /* CRITICAL GLOBAL RESETS - Ensure html and body don't cause overflow */
     html, body {
-        overflow-x: hidden !important; /* Hide potential scrollbar, but try to fix the cause below */
         width: 100% !important;
+        overflow-x: hidden !important; /* Hides the scrollbar, but we still try to fix the cause below */
         margin: 0 !important;
         padding: 0 !important;
         box-sizing: border-box !important;
     }
-
-    /* General box-sizing for all elements */
-    * {
+    * { /* Apply border-box to all elements */
         box-sizing: border-box !important;
     }
 
-    /* Reset row and column spacing to ensure no conflicts */
+    /* Aggressive row and column resets */
     .row {
         margin-left: 0 !important;
         margin-right: 0 !important;
@@ -111,13 +109,15 @@ a{
         width: 100% !important; /* Force column to 100% on mobile */
     }
 
-    /* Apply consistent padding to the wrapper, which should now fill the column 100% */
+    /* Precisely control the input-item-wrapper's width and position */
+    /* Assumes you want a 15px gap from the screen edge on both sides */
     .input-item-wrapper {
-        padding-left: 15px !important; /* Adjust this value for desired inner spacing */
-        padding-right: 15px !important; /* Adjust this value for desired inner spacing */
-        width: 100% !important; /* Ensure wrapper takes full width of column */
-        margin-left: 0 !important;
-        margin-right: 0 !important;
+        width: calc(100% - 30px) !important; /* 100% of parent minus (15px left + 15px right margin) */
+        margin-left: 15px !important; /* Push from left edge */
+        margin-right: 15px !important; /* Push from right edge */
+        padding-left: 0 !important; /* Padding handled by width/margin combo */
+        padding-right: 0 !important; /* Padding handled by width/margin combo */
+        box-sizing: border-box !important;
     }
 
     /* Force input-group and button to be 100% of their wrapper */
@@ -126,14 +126,16 @@ a{
         width: 100% !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
+        box-sizing: border-box !important;
     }
 
     /* Aggressive control over input-group-prepend text and sizing */
     .input-group-prepend {
         flex-shrink: 0 !important; /* Prevent it from expanding */
-        max-width: 35% !important; /* Adjust this percentage: e.g., 30%, 40% if labels are long */
+        max-width: 35% !important; /* ADJUST THIS PERCENTAGE if labels are still too wide (e.g., 30%, 40%) */
         min-width: unset !important; /* Remove any potential min-width */
         flex-basis: auto !important; /* Allow flex basis to be automatic */
+        box-sizing: border-box !important;
     }
 
     .input-group-prepend .input-group-text {
@@ -143,6 +145,7 @@ a{
         padding: .375rem .5rem !important; /* Adjust if needed for better fit */
         font-size: 0.8em !important; /* Make font smaller if necessary */
         line-height: 1.2 !important;
+        box-sizing: border-box !important;
     }
 
     /* Ensure form control (input/select) properly shrinks and takes remaining space */
@@ -151,6 +154,7 @@ a{
         min-width: 0 !important; /* Crucial for allowing shrinkage */
         flex-grow: 1 !important; /* Take all available space */
         width: 100% !important; /* Override any potential default width */
+        box-sizing: border-box !important;
     }
 
     /* Ensure the custom-search-box itself is not wider than the viewport */
@@ -160,6 +164,6 @@ a{
         margin-right: 0 !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
+        box-sizing: border-box !important;
     }
 }
-
