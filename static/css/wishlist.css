@@ -36,3 +36,22 @@
 .qty i {
   font-size: 11px;
 }
+
+/* Custom CSS to fix input-group overflow on very small screens */
+@media (max-width: 575.98px) { /* Targets extra-small screens (Bootstrap's 'xs' breakpoint) */
+    .input-group-prepend .input-group-text {
+        white-space: normal; /* Allows the text (e.g., "Check In") to wrap onto a new line if needed */
+        word-break: break-word; /* Helps break long words if they are causing overflow */
+    }
+
+    .input-group .form-control,
+    .input-group .custom-select {
+        min-width: 0; /* Ensures the input/select field can shrink to its minimum necessary width */
+        flex-grow: 1; /* Makes the input/select take up available space */
+    }
+
+    /* Optional: To ensure the button is within its column boundaries */
+    .col-12.col-md-3 button {
+        box-sizing: border-box; /* Ensures padding/border are included in the element's total width */
+    }
+}
