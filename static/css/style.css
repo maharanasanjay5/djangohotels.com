@@ -79,3 +79,58 @@ a{
 .user-registration-form{
      box-shadow: rgba(0, 162, 183, 0.16) 0px 1px 4px;
 }
+
+/* Custom CSS to aggressively fix input-group and row overflow on very small screens */
+@media (max-width: 575.98px) { /* Targets extra-small screens (Bootstrap's 'xs' breakpoint) */
+
+    /* Force the input-group-prepend to be highly flexible and constrain its width */
+    .input-group-prepend {
+        flex-shrink: 0 !important; /* Prevents it from consuming too much space */
+        max-width: 35% !important; /* Cap its max width (ADJUST THIS PERCENTAGE IF NEEDED) */
+        min-width: 0 !important;    /* Allow it to shrink to nothing */
+    }
+
+    .input-group-prepend .input-group-text {
+        white-space: normal !important; /* Allow text to wrap */
+        word-break: break-word !important; /* Break long words */
+        text-align: center !important; /* Center text if it wraps */
+        padding: .375rem .5rem !important; /* Slightly reduce padding if needed */
+        font-size: 0.85em !important; /* Make font smaller if it helps fit */
+        line-height: 1.2 !important; /* Adjust line height for wrapped text */
+    }
+
+    /* Ensure form control (input/select) fills remaining space and shrinks */
+    .input-group .form-control,
+    .input-group .custom-select {
+        min-width: 0 !important;
+        flex-grow: 1 !important;
+        width: 100% !important; /* Important for flex items */
+    }
+
+    /* Aggressive reset for row margins and column padding on mobile */
+    .row {
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important; /* Ensure no horizontal padding on the row itself */
+        padding-right: 0 !important; /* Ensure no horizontal padding on the row itself */
+    }
+
+    /* Remove default column padding and add desired padding directly to inner content */
+    .row > [class*="col-"] {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
+
+    /* Apply inner horizontal padding to the direct children of the column */
+    .col-12 > .input-group,
+    .col-12 > .btn {
+        padding-left: 15px !important; /* Adjust this value as per your desired inner padding */
+        padding-right: 15px !important; /* Adjust this value */
+    }
+
+    /* Ensure the custom-search-box itself is not wider than the viewport */
+    .custom-search-box {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+    }
+}
