@@ -17,7 +17,7 @@
    <!-- Font Awsome -->
    <script src="https://kit.fontawesome.com/0f42c19b3f.js" crossorigin="anonymous"></script>
 
-   <title>Welcome To Django Hotel | Your Perfect Stay Awaits</title>
+   <title>Welcome To Django Hotel | Find Your Home Comfortness</title>
 </head>
 
 <body>
@@ -29,17 +29,15 @@
                <div class="col-lg-6 col-md-12">
                   <h1 class="mr-pc">Welcome to <span class="font-weight-bolder">Django Hotel</span> </h1>
                   <h4>Find your <span class="mr-pc">HOME COMFORTNESS</span></h4>
-                  <p class="pb-md-3">There are many variations of passages of Lorem Ipsum available, but the majority
-                     have
-                     suffered
-                     alteration in some form, by injected humour, or randomised words which don't look even
-                     slightly
-                     believable
+                  <p class="pb-md-3">Discover a seamless blend of style and comfort at Django Hotel in Hyderabad. 
+                     Whether you're here for business or leisure, our thoughtfully designed rooms, rooftop pool, 
+                     fine dining, spa and dedicated service ensure a truly memorable stay. 
+                     We're perfectly situated to offer easy access.
                   </p>
                   {{search_form.room_type.option.value}}
                   <!-- Searc box code start here..... -->
                   <div class="custom-search-box my-md-5">
-                     <form action="{% url 'search' %}" method="get">
+                     <form action="/djangohotels.com/templates/pages/search_result.html" method="get">
                         {% csrf_token %}
                         <div class="row p-3">
                            <div class="col-4">
@@ -113,13 +111,13 @@
             </div>
             <div class="col custom-box-shadow m-2 p-2">
                <div class="text-center h1 mr-pc"><i class="fa-regular fa-rectangle-xmark"></i></i></div>
-               <h3 class="text-center">Hassel Free Cancelation</h3>
-               <p class="text-center">Easily canecle your booking from our website.</p>
+               <h3 class="text-center">Hassle Free Cancelation</h3>
+               <p class="text-center">Easily cancel your booking from our website.</p>
             </div>
             <div class="col custom-box-shadow m-2 p-2">
                <div class="text-center h1 mr-pc"><i class="fa-solid fa-star"></i></div>
                <h3 class="text-center">High Rated</h3>
-               <p class="text-center">We are one of the high rated hotel in this community.</p>
+               <p class="text-center">We are one of the highest rated hotel in this community.</p>
             </div>
             <div class="col custom-box-shadow m-2 p-2">
                <div class="text-center h1 mr-pc"><i class="fa-solid fa-headset"></i></div>
