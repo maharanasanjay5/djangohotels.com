@@ -16,7 +16,7 @@
    <!-- Font Awsome -->
    <script src="https://kit.fontawesome.com/0f42c19b3f.js" crossorigin="anonymous"></script>
 
-   <title>Welcome To Django Hotel | Your Perfect Stay Awaits</title>
+   <title>Welcome To Django Hotel | Find your Home Comfortness</title>
 </head>
 <body>
 <header>
@@ -44,32 +44,26 @@
 
             </ul>
             <ul class="navbar-nav">
-               {% if user.is_authenticated %}
                <li id="nav-user" class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                      aria-haspopup="true" aria-expanded="false">
                      <i class="fa-solid fa-user mx-2"></i>
-                     {{user.person.name}}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                      <a class="dropdown-item" href="/djangohotels.com/templates/user/profile.html">Profile</a>
                      <a class="dropdown-item" href="/djangohotels.com/templates/room_booking/wishlist.html">Wish List</a>
                      <a class="dropdown-item" href="/djangohotels.com/templates/room_booking/my_booking.html">My booking</a>
                      <div class="dropdown-divider"></div>
-                     {% if user.is_receptionist %}
                      <a class="dropdown-item" href="/djangohotels.com/templates/pages/management.html">Management</a>
-                     {% endif %}
                      <a class="dropdown-item" href="/djangohotels.com/templates/user/login.html">Sign out</a>
                   </div>
                </li>
-               {% else %}
                <li id="nav-signin" class="nav-item">
                   <a class="nav-link" href="/djangohotels.com/templates/user/login.html">Sign in</a>
                </li>
                <li id="nav-signup" class="nav-item">
                   <a class="nav-link " href="/djangohotels.com/templates/user/register.html">Sign up</a>
                </li>
-               {% endif %}
             </ul>
          </div>
       </nav>
