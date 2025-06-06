@@ -133,4 +133,11 @@ a{
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
+
+        /* NEW: Apply consistent inner padding to our new wrapper for alignment */
+    .input-item-wrapper {
+        padding-left: 15px !important; /* Adjust this value as per your desired inner padding */
+        padding-right: 15px !important; /* Adjust this value */
+        box-sizing: border-box !important; /* Ensure padding doesn't add to total width */
+    } 
 }
