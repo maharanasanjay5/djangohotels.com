@@ -80,6 +80,11 @@ a{
      box-shadow: rgba(0, 162, 183, 0.16) 0px 1px 4px;
 }
 
+/* Default font size for desktop (h2 default size) */
+.footer-icon-h2 {
+    font-size: 2.5rem; /* Or your preferred default h2 size */
+}
+
 /* Add this to your custom CSS file, or directly in a <style> tag in your HTML header */
 @media (max-width: 575.98px) { /* Targets extra-small screens (Bootstrap's 'xs' breakpoint) */
 
@@ -208,5 +213,19 @@ a{
         max-width: calc(100% - 15px) !important; /* Example: Max width is 100% minus the margin you applied to the input */
         min-width: 0 !important; /* Allow them to shrink as much as possible */
     }
+    
+     .footer-icon-h2 {
+        font-size: 1.5rem !important; /* Adjust this value as needed (e.g., 1.2rem, 1.8rem) */
+        /* Ensure no extra margin or padding around the icon itself */
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+    /* Optional: Ensure the text content within the columns can wrap properly */
+    .footer .row .col {
+        white-space: normal !important; /* Allow text to wrap if it's very long */
+        word-break: break-word !important; /* Break long words if necessary */
+    }
 }
+
 
