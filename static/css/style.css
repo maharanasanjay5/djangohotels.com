@@ -166,4 +166,47 @@ a{
         padding-right: 0 !important;
         box-sizing: border-box !important;
     }
+
+    /* Ensure the wrapper (d-flex flex-wrap) is correctly set up */
+    .subscribe-section .d-flex.flex-wrap {
+        /* Ensure no internal padding/margin is messing up the children's spacing */
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        /* Optional: Add a gap fallback if 'gap-2' is not working, or if using older Bootstrap */
+        /* If you're using 'gap-2' in HTML, remove these lines or they will conflict */
+        /* gap: 15px !important; */ /* Try a fixed pixel gap if needed */
+        /* justify-content: center !important; */
+        /* align-items: center !important; */
+    }
+
+    /* Force specific margins on the input for horizontal spacing */
+    .subscribe-section input[type="email"] {
+        margin-right: 15px !important; /* Force a 15px gap to the right of the input */
+        margin-left: 0 !important;    /* Ensure no unwanted left margin */
+        margin-bottom: 10px !important; /* Force a 10px bottom margin for stacking */
+        width: auto !important; /* Let content determine width for wrapping */
+        flex-shrink: 0 !important; /* Prevent it from shrinking more than necessary */
+        box-sizing: border-box !important;
+    }
+
+    /* Force specific margins on the button for horizontal and vertical spacing */
+    .subscribe-section button[type="submit"] {
+        margin-left: 0 !important; /* Ensure no unwanted left margin from other rules */
+        margin-right: 0 !important; /* Ensure no unwanted right margin */
+        margin-bottom: 10px !important; /* Force a 10px bottom margin for stacking */
+        /* If the button stretches full width on mobile, and you want it to wrap correctly */
+        /* width: auto !important; */
+        flex-shrink: 0 !important; /* Prevent it from shrinking more than necessary */
+        box-sizing: border-box !important;
+    }
+
+    /* If they are still not aligning, make sure both are flexible and can shrink */
+    .subscribe-section input[type="email"],
+    .subscribe-section button[type="submit"] {
+        max-width: calc(100% - 15px) !important; /* Example: Max width is 100% minus the margin you applied to the input */
+        min-width: 0 !important; /* Allow them to shrink as much as possible */
+    }
 }
+
