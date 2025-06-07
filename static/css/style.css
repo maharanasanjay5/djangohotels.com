@@ -212,20 +212,70 @@ a{
     .subscribe-section button[type="submit"] {
         max-width: calc(100% - 15px) !important; /* Example: Max width is 100% minus the margin you applied to the input */
         min-width: 0 !important; /* Allow them to shrink as much as possible */
+    }  
+  }
+
+/* Add this to your custom CSS file, or within a <style> tag in your HTML header */
+
+@media (max-width: 575.98px) { /* Targets extra-small screens (Bootstrap's 'xs' breakpoint) */
+
+    /* Force the main contact blocks to take full width and handle their own padding */
+    footer .col-12.col-md-4 {
+        width: 100% !important;
+        padding-left: 15px !important; /* Desired inner padding for the contact block */
+        padding-right: 15px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        box-sizing: border-box !important;
     }
-    
-     .footer-icon-h2 {
-        font-size: 1.5rem !important; /* Adjust this value as needed (e.g., 1.2rem, 1.8rem) */
-        /* Ensure no extra margin or padding around the icon itself */
+
+    /* Force the inner row to be a horizontal flex container on mobile */
+    footer .col-12.col-md-4 > .row {
+        flex-direction: row !important; /* Crucial: make sure items are side-by-side */
+        flex-wrap: wrap !important;     /* Allow wrapping if truly too much content */
+        justify-content: flex-start !important; /* Align to the left within their block */
+        align-items: center !important; /* Vertically center items */
+        margin-left: 0 !important;      /* Remove row's negative margins */
+        margin-right: 0 !important;
+        padding-left: 0 !important;     /* Remove row's internal padding */
+        padding-right: 0 !important;
+        width: 100% !important;         /* Ensure row itself takes full width */
+    }
+
+    /* Aggressively style the icon column */
+    footer .col-auto {
+        padding: 0 !important;          /* Remove all padding from col-auto */
+        margin: 0 !important;           /* Remove all margin from col-auto */
+        min-width: 0 !important;        /* CRITICAL: Allow it to shrink */
+        flex-basis: auto !important;    /* Let content dictate initial size */
+        flex-shrink: 0 !important;      /* Prevent shrinking smaller than content */
+        /* Add a small right margin for spacing next to text */
+        margin-right: 5px !important; /* Adjust for desired gap between icon and text */
+        box-sizing: border-box !important;
+    }
+
+    /* Aggressively style the text column */
+    footer .col {
+        padding: 0 !important;          /* Remove all padding from col */
+        margin: 0 !important;           /* Remove all margin from col */
+        min-width: 0 !important;        /* CRITICAL: Allow it to shrink */
+        flex-grow: 1 !important;        /* Allow it to take remaining space */
+        box-sizing: border-box !important;
+    }
+
+    /* Ensure icons are small on mobile (as in previous solution) */
+    .footer-icon-h2 {
+        font-size: 1.5rem !important; /* Adjust if needed */
         margin: 0 !important;
         padding: 0 !important;
+        line-height: 1 !important; /* Compact line height */
     }
 
-    /* Optional: Ensure the text content within the columns can wrap properly */
-    .footer .row .col {
-        white-space: normal !important; /* Allow text to wrap if it's very long */
-        word-break: break-word !important; /* Break long words if necessary */
+    /* Ensure text within paragraphs wraps */
+    footer .col p {
+        white-space: normal !important; /* Ensure text wraps */
+        word-break: break-word !important; /* Force breaking of long words */
+        margin-bottom: 0 !important; /* Remove default paragraph bottom margin */
     }
 }
-
 
