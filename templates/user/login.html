@@ -80,7 +80,7 @@
                 <div class="col col-md-6 mx-auto p-1 p-md-5 user-login-form">
                     <form action="/djangohotels.com/templates/user/profile.html" method="post">
                         <div class="alert alert-danger" role="alert">
-                            {{error_msg}}
+                            
                         </div>
                         
                         <div class="row">
@@ -91,7 +91,7 @@
                                         class="form-control border-info" id="id_{{person_form.email.name}}"
                                         aria-describedby="emailHelp" {% if person_form.email.value%}
                                         value="{{person_form.email.value}}" {%endif%} placeholder="Enter email">
-                                    {{person_form.email.errors}}
+                                    
                                 </div>
                             </div>
                         </div>
@@ -103,7 +103,7 @@
                                         class="form-control border-info" id="id_{{account_form.password.name}}" {% if
                                         account_from.password.value %} value="{{account_form.password.value}}" {%
                                         endif%} placeholder="Password">
-                                    {{account_form.password.errors}}
+                                    
                                 </div>
                             </div>
                         </div>
