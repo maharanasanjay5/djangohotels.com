@@ -83,32 +83,27 @@
                         <div class="form-group">
                             <label for="id_{{person_form.name.name}}">Name</label>
                             <input required type="text" name="{{person_form.name.name}}" class="form-control border-info"
-                                id="id_{{person_form.name.name}}" {% if person_form.name.value%}
-                                value="{{person_form.name.value}}" {%endif%} placeholder="Enter name">
+                                id="id_{{person_form.name.name}}"
+                                value="" placeholder="Enter name">
                         </div>
                         <div class="form-group">
                             <label for="id_{{person_form.email.name}}">Email address</label>
                             <input required type="email" name="{{person_form.email.name}}" class="form-control border-info"
                                 id="id_{{person_form.email.name}}" aria-describedby="emailHelp" 
-                                {% if person_form.email.value%} value="{{person_form.email.value}}" {%endif%}
+                                 value=""
                                 placeholder="Enter email">
-                            {% if person_form.email.errors %}
-                            <div class="alert alert-danger mt-2" role="alert">
-                                {{person_form.email.errors}}
+                            
+                            <div class="alert alert-danger mt-2">
+                                
                             </div>
-                            {% endif %}
                         </div>
                         <div class="form-group">
                             <label for="id_{{account_form.password.name}}">Password</label>
                             <input required name="{{account_form.password.name}}" type="password" class="form-control border-info"
-                                id="id_{{account_form.password.name}}" {% if account_from.password.value %}
-                                value="{{account_form.password.value}}" {% endif %} placeholder="Password">
-                                {% if account_form.password.errors %}
-                                <div class="alert alert-danger mt-2" role="alert">
-                                    {{account_form.password.errors}}
+                                id="id_{{account_form.password.name}}"
+                                value="" placeholder="Password">
+                                <div class="alert alert-danger mt-2">
                                 </div>
-                                {% endif %}
-                            
                         </div>
 
                         <div class="row">
